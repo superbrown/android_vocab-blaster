@@ -3,7 +3,7 @@ package com.superbrown.vocabBlaster.soundPalettes;
 
 import android.content.Context;
 import com.superbrown.vocabBlaster.utils.audio.SoundPalette;
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 
 /**
  */

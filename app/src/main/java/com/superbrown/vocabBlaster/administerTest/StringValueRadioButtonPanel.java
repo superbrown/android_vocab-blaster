@@ -8,7 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
 
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 
 import java.util.HashMap;
 import java.util.List;

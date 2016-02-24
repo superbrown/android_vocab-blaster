@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 import com.superbrown.vocabBlaster.vocabulary.GradeLevel;
 import com.superbrown.vocabBlaster.vocabulary.VocabularyList;
 

@@ -9,13 +9,13 @@ import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import com.superbrown.superspell.android.vocabBlaster.client.ver2.VocabBlasterApplication;
 import com.superbrown.vocabBlaster.soundPalettes.SoundPalette_GomerPyle;
 import com.superbrown.vocabBlaster.soundPalettes.SoundPalette_ThreeStooges;
 import com.superbrown.android.util.DefectReportingActivity;
 import com.superbrown.vocabBlaster.utils.audio.SoundPalette;
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 
 /**
 * Created by Mike on 2/1/14.
@@ -29,6 +29,7 @@ public class VocabBlasterActivity extends DefectReportingActivity
     public int COLOR_CHALK_WHITE;
     public int COLOR_CHALK_GRAY;
     public int COLOR_CHALK_YELLOW;
+    public int CHALK_FONT_SIZE;
 
     private SoundPalette silentSoundPalette;
     private SoundPalette soundPalette_ThreeStooges;
@@ -50,6 +51,8 @@ public class VocabBlasterActivity extends DefectReportingActivity
         COLOR_CHALK_WHITE = ContextCompat.getColor(this, R.color.chalk_white);
         COLOR_CHALK_GRAY = ContextCompat.getColor(this, R.color.chalk_gray);
         COLOR_CHALK_YELLOW = ContextCompat.getColor(this, R.color.chalk_yellow);
+
+        CHALK_FONT_SIZE = 25;
 
         setTitle("Vocab-Blaster");
 
@@ -144,6 +147,12 @@ public class VocabBlasterActivity extends DefectReportingActivity
             default:
                 return super.onOptionsItemSelected(selectedMenuItem);
         }
+    }
+
+    public void formatHandwritingOnAChalkboard(TextView textView) {
+        textView.setTypeface(CHALK_FONT);
+        textView.setTextColor(COLOR_CHALK_YELLOW);
+        textView.setTextSize(CHALK_FONT_SIZE);
     }
 
     public SoundPalette getSoundPalette()
