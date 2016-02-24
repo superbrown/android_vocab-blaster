@@ -4,11 +4,11 @@ android {
     compileSdkVersion 23
     buildToolsVersion "19.1.0"
     defaultConfig {
-        applicationId "com.superbrown.superspell.android.vocabBlaster.client.ver2"
+        applicationId "com.superbrown.vocabBlaster"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 32
-        versionName "02-01-2016 a"
+        versionCode 33
+        versionName "02-24-2016 a"
     }
     buildTypes {
         release {
