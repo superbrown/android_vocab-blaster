@@ -3,7 +3,7 @@ package com.superbrown.vocabBlaster;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import com.superbrown.vocabBlaster.administerTest.TestAdministratorLayout;
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 import com.superbrown.vocabBlaster.vocabulary.VocabularyList;
 
 /**

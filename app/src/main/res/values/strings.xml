@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vocab-Blaster</string>
+
+    <string name="instructions_selectAGradeLevel">Choose a Grade Level:</string>
+    <string name="instructions_selectAVocabularyList">Choose a vocabulary list:</string>
+
+    <string name="optionsMenuItem_label_restart">Restart</string>
+    <string name="optionsMenuItem_label_gomerSound">Gomer Sound</string>
+    <string name="optionsMenuItem_label_3StoogesSound">3 Stooges Sound</string>
+    <string name="optionsMenuItem_label_noSound">No Sound</string>
+
+</resources>

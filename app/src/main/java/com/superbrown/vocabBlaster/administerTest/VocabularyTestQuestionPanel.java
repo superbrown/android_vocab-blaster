@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 import com.superbrown.vocabBlaster.VocabBlasterActivity;
 import com.superbrown.vocabBlaster.vocabulary.VocabularyWord;
 
@@ -16,9 +16,6 @@ import com.superbrown.vocabBlaster.vocabulary.VocabularyWord;
 */
 public abstract class VocabularyTestQuestionPanel extends TestQuestionPanel
 {
-    public VocabBlasterActivity getVocabBlasterActivity() {
-        return (VocabBlasterActivity) getContext();
-    }
 
     public VocabularyTestQuestionPanel(Context context,
                                        VocabularyWord vocabularyWord)

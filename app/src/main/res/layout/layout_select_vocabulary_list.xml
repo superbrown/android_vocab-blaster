@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chalkboard_green">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectVocabularyList_scrollView_main">
+
+        <FrameLayout
+            android:id="@+id/selectVocabularyList_frameLayout_main"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:padding="10dp"
+            android:focusableInTouchMode="true">
+
+            <LinearLayout
+                android:id="@+id/selectVocabularyList_linearLayout_main"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|top" >
+
+                <TextView
+                    android:id="@+id/selectVocabularyList_textView_selectedGradeLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/instructions_selectAGradeLevel"
+                    android:textColor="@color/chalk_white"
+                    android:layout_gravity="start|top" />
+
+                <Spinner
+                        android:id="@+id/selectVocabularyList_spinner_selectedGradeLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|top" />
+
+                <TextView
+                        android:id="@+id/selectVocabularyList_textView_selectVocabularyList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructions_selectAVocabularyList"
+                        android:textColor="@color/chalk_white"
+                        android:layout_gravity="left|top"
+                        android:layout_marginTop="10dp"
+                        android:visibility="invisible" />
+
+                <Spinner
+                        android:id="@+id/selectVocabularyList_spinner_selectVocabularyList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|top"
+                        android:visibility="invisible" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></TableRow>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
+
+</LinearLayout>

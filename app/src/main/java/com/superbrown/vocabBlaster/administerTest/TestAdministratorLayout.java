@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.superbrown.superspell.android.ver2.R;
+import com.superbrown.vocabBlaster.R;
 import com.superbrown.vocabBlaster.AdministerTestActivity;
 import com.superbrown.vocabBlaster.VocabBlasterActivity;
 import com.superbrown.superspell.android.vocabBlaster.client.ver2.VocabBlasterApplication;
@@ -57,16 +57,12 @@ public class TestAdministratorLayout extends TableLayout implements IResetable
 
         TextView label = new TextView(this.getContext());
         label.setText("Great work!!");
-        label.setTypeface(getVocabBlasterActivity().CHALK_FONT);
-        label.setTextColor(getVocabBlasterActivity().COLOR_CHALK_YELLOW);
-        label.setTextSize(25);
+        getVocabBlasterActivity().formatHandwritingOnAChalkboard(label);
         addView(label);
 
         label = new TextView(this.getContext());
         label.setText("You have these words pretty well mastered.");
-        label.setTypeface(getVocabBlasterActivity().CHALK_FONT);
-        label.setTextColor(getVocabBlasterActivity().COLOR_CHALK_YELLOW);
-        label.setTextSize(25);
+        getVocabBlasterActivity().formatHandwritingOnAChalkboard(label);
 
         Button button = new Button(this.getContext());
         button.setText("Start Over");

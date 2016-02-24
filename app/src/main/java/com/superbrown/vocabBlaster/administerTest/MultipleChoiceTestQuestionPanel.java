@@ -79,11 +79,8 @@ public class MultipleChoiceTestQuestionPanel extends VocabularyTestQuestionPanel
                         if (answerResultType == AnswerResultType.CORRECT)
                         {
                             TextView messageLabel = new TextView(getContext());
+                            getVocabBlasterActivity().formatHandwritingOnAChalkboard(messageLabel);
                             messageLabel.setText(getARandomGotTheAnswerCorrectMessage() + " That's correct.");
-                            messageLabel.setTypeface(getVocabBlasterActivity().CHALK_FONT);
-                            messageLabel.setTextColor(getVocabBlasterActivity().COLOR_CHALK_YELLOW);
-
-                            messageLabel.setTextSize(20);
                             addView(messageLabel, getChildCount() - 1);
                         }
                         else
@@ -101,9 +98,7 @@ public class MultipleChoiceTestQuestionPanel extends VocabularyTestQuestionPanel
                                 firstMessage.setText("You ran out of time.");
                             }
 
-                            firstMessage.setTypeface(getVocabBlasterActivity().CHALK_FONT);
-                            firstMessage.setTextColor(getVocabBlasterActivity().COLOR_CHALK_YELLOW);
-                            firstMessage.setTextSize(20);
+                            getVocabBlasterActivity().formatHandwritingOnAChalkboard(firstMessage);
                             firstMessage.setPadding(0, 10, 0, 0);
 
                             addView(firstMessage, getChildCount() - 1);

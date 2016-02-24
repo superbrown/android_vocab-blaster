@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/optionsMenuItem_restart"
+        android:title="@string/optionsMenuItem_label_restart"
+        />
+    <item
+        android:id="@+id/optionsMenuItem_gomerSound"
+        android:title="@string/optionsMenuItem_label_gomerSound"
+        />
+    <item
+        android:id="@+id/optionsMenuItem_3StoogesSound"
+        android:title="@string/optionsMenuItem_label_3StoogesSound"
+        />
+    <item
+        android:id="@+id/optionsMenuItem_NoSound"
+        android:title="@string/optionsMenuItem_label_noSound"
+        />
+
+</menu>

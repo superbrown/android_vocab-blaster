@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.superbrown.android.util.ResourceUtils;
 import com.superbrown.vocabBlaster.utils.audio.SoundPalette;
@@ -141,6 +142,10 @@ public abstract class TestQuestionPanel extends TableLayout
         setButton(button);
 
         return button;
+    }
+
+    public VocabBlasterActivity getVocabBlasterActivity() {
+        return (VocabBlasterActivity) getContext();
     }
 
     protected abstract View createQuestionTextWidget();

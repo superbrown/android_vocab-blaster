@@ -1,0 +1,9 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="chalkboard_green">#014F2A</color>
+    <color name="chalk_white">#FFFFFF</color>
+    <color name="chalk_yellow">#ECFF00</color>
+    <color name="chalk_gray">#DDDDDD</color>
+
+</resources>
