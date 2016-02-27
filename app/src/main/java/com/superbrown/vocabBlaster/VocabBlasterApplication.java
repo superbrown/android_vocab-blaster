@@ -2,24 +2,40 @@ package com.superbrown.vocabBlaster;
 
 import android.app.Application;
 
+import com.superbrown.vocabBlaster.soundPalettes.SoundPalette_GomerPyle;
+import com.superbrown.vocabBlaster.soundPalettes.SoundPalette_ThreeStooges;
+import com.superbrown.vocabBlaster.utils.audio.SoundPalette;
 import com.superbrown.vocabBlaster.vocabulary.GradeLevel;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-public class VocabBlasterApplication extends Application implements Serializable {
-    public Map<String, GradeLevel> grades = new LinkedHashMap<String, GradeLevel>();
-    public AppState appState;
-
-    public VocabBlasterApplication() {
-        appState = new AppState();
-        initializeVocabularyLists();
+public class VocabBlasterApplication extends Application implements Serializable  {
+    public enum SoundPaletteName {
+        SILENT,
+        THREE_STOOGES,
+        GOMER_PYLE;
     }
 
-    protected void initializeVocabularyLists()
-    {
+    public VocabBlasterAppState appState;
+
+    public Map<String, GradeLevel> grades;
+    public Map<SoundPaletteName, SoundPalette> soundPaletteInventory;
+
+    public VocabBlasterApplication() {
+
+        appState = new VocabBlasterAppState();
+        initializeVocabularyLists();
+        initializeSoundPalettes();
+    }
+
+    protected void initializeVocabularyLists() {
+
+        grades = new LinkedHashMap();
+
         GradeLevel gradeLevel = new GradeLevel("6th Grade");
         gradeLevel.addVocabularyList(new com.superbrown.vocabBlaster.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson01("Lesson 01"));
         gradeLevel.addVocabularyList(new com.superbrown.vocabBlaster.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson02("Lesson 02"));
@@ -86,25 +102,44 @@ public class VocabBlasterApplication extends Application implements Serializable
         grades.put(gradeLevel.getName(), gradeLevel);
     }
 
-    public AppState getAppState()
-    {
+    public VocabBlasterAppState getAppState() {
         return appState;
     }
 
-    public void setAppState(AppState appState)
-    {
+    public void setAppState(VocabBlasterAppState appState) {
         this.appState = appState;
     }
 
-    public void reset()
-    {
+    public void reset() {
+
         if (this.appState == null)
         {
-            this.appState = new AppState();
+            this.appState = new VocabBlasterAppState();
         }
         else
         {
             this.appState.reset();
         }
+    }
+
+    private void initializeSoundPalettes() {
+
+        soundPaletteInventory = new HashMap<>();
+        soundPaletteInventory.put(SoundPaletteName.SILENT, new SoundPalette());
+        soundPaletteInventory.put(SoundPaletteName.THREE_STOOGES, new SoundPalette_ThreeStooges(this));
+        soundPaletteInventory.put(SoundPaletteName.GOMER_PYLE, new SoundPalette_GomerPyle(this));
+
+        setSoundPalette(SoundPaletteName.SILENT);
+    }
+
+    public SoundPalette getSoundPalette() {
+
+        SoundPaletteName soundPaletteName = getAppState().getSoundPaletteName();
+        return soundPaletteInventory.get(soundPaletteName);
+    }
+
+    private void setSoundPalette(SoundPaletteName soundPaletteName) {
+
+        getAppState().setSoundPaletteName(soundPaletteName);
     }
 }

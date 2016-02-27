@@ -10,18 +10,18 @@ import java.io.Serializable;
 /**
  * Created by Mike on 2/1/14.
  */
-public class AppState extends Application implements Serializable
+public class VocabBlasterAppState extends Application implements Serializable
 {
     protected String LOG_TAG = "my debug";
 
     private GradeLevel selectedGradeLevel;
     private VocabularyList selectedVocabularyList;
+    private VocabBlasterApplication.SoundPaletteName soundPaletteName;
 
-    public AppState()
+    public VocabBlasterAppState()
     {
         reset();
     }
-
 
     public void reset()
     {
@@ -81,5 +81,14 @@ public class AppState extends Application implements Serializable
         this.selectedVocabularyList = selectedVocabularyList;
 //        Log.i(LOG_TAG, "Calling setSelectedVocabularyList(): " +
 //                (selectedVocabularyList == null ? null : selectedVocabularyList.getName()));
+    }
+
+
+    public void setSoundPaletteName(VocabBlasterApplication.SoundPaletteName soundPaletteName) {
+        this.soundPaletteName = soundPaletteName;
+    }
+
+    public VocabBlasterApplication.SoundPaletteName getSoundPaletteName() {
+        return soundPaletteName;
     }
 }
