@@ -16,7 +16,7 @@ public class VocabularyList_Lesson08 extends VocabularyList
         addVocabularyWordToInventory("|adequate| adj. sufficient; equal to what is required");
         addVocabularyWordToInventory("|advantageous| adj. offering an advantage or benefit; profitable; favorable");
         addVocabularyWordToInventory("|descend| v. to move down; to stoop; to make a sudden attack or visit; to come down, as from an ancestor");
-        addVocabularyWordToInventory("|enhance| v. to improve; to make greater; to decorate; to addVocabularyList to");
+        addVocabularyWordToInventory("|enhance| v. to improve; to make greater; to decorate; to add to");
         addVocabularyWordToInventory("|gnarled| adj. having knots; misshapen; twisted");
         addVocabularyWordToInventory("|incite| v. to urge into action; to stir up or arouse");
         addVocabularyWordToInventory("|inflexible| adj. not capable of being changed; unyielding; obstinate");

@@ -11,11 +11,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.superbrown.vocabBlaster.soundPalettes.SoundPalette_GomerPyle;
-import com.superbrown.vocabBlaster.soundPalettes.SoundPalette_ThreeStooges;
 import com.superbrown.android.util.DefectReportingActivity;
 import com.superbrown.vocabBlaster.utils.audio.SoundPalette;
-import com.superbrown.vocabBlaster.R;
+
+import static com.superbrown.vocabBlaster.VocabBlasterApplication.SoundPaletteName.GOMER_PYLE;
+import static com.superbrown.vocabBlaster.VocabBlasterApplication.SoundPaletteName.SILENT;
+import static com.superbrown.vocabBlaster.VocabBlasterApplication.SoundPaletteName.THREE_STOOGES;
 
 /**
 * Created by Mike on 2/1/14.
@@ -31,10 +32,6 @@ public class VocabBlasterActivity extends DefectReportingActivity
     public int COLOR_CHALK_YELLOW;
     public int CHALK_FONT_SIZE;
 
-    private SoundPalette silentSoundPalette;
-    private SoundPalette soundPalette_ThreeStooges;
-    private SoundPalette soundPalette_GomerPyle;
-    private SoundPalette soundPalette;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,8 +52,6 @@ public class VocabBlasterActivity extends DefectReportingActivity
         CHALK_FONT_SIZE = 25;
 
         setTitle("Vocab-Blaster");
-
-        initializeSoundPalettes();
 
 //        getMyStateFromBundle(savedInstanceState);
     }
@@ -104,14 +99,6 @@ public class VocabBlasterActivity extends DefectReportingActivity
 //        Log.i(LOG_TAG, "Calling onDestroy()");
     }
 
-    private void initializeSoundPalettes()
-    {
-        silentSoundPalette = new SoundPalette();
-        soundPalette_ThreeStooges = new SoundPalette_ThreeStooges(this);
-        soundPalette_GomerPyle = new SoundPalette_GomerPyle(this);
-        soundPalette = silentSoundPalette;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -127,21 +114,21 @@ public class VocabBlasterActivity extends DefectReportingActivity
         switch (selectedMenuItem.getItemId())
         {
             case R.id.optionsMenuItem_restart:
-                ((VocabBlasterApplication)getApplication()).getAppState().setSelectedVocabularyList(null);
+                getAppState().setSelectedVocabularyList(null);
                 Intent selectVocabularyListIntent = new Intent(this, SelectVocabularyListActivity.class);
                 startActivity(selectVocabularyListIntent);
                 return true;
 
             case R.id.optionsMenuItem_gomerSound:
-                soundPalette = this.soundPalette_GomerPyle;
+                getAppState().setSoundPaletteName(GOMER_PYLE);
                 return true;
 
             case R.id.optionsMenuItem_3StoogesSound:
-                soundPalette = soundPalette_ThreeStooges;
+                getAppState().setSoundPaletteName(THREE_STOOGES);
                 return true;
 
             case R.id.optionsMenuItem_NoSound:
-                soundPalette = silentSoundPalette;
+                getAppState().setSoundPaletteName(SILENT);
                 return true;
 
             default:
@@ -149,15 +136,11 @@ public class VocabBlasterActivity extends DefectReportingActivity
         }
     }
 
-    public void formatHandwritingOnAChalkboard(TextView textView) {
+    public void formatHandwritingOnAChalkboard(TextView textView)
+    {
         textView.setTypeface(CHALK_FONT);
         textView.setTextColor(COLOR_CHALK_YELLOW);
         textView.setTextSize(CHALK_FONT_SIZE);
-    }
-
-    public SoundPalette getSoundPalette()
-    {
-        return soundPalette;
     }
 
     public void onConfigurationChanged(Configuration newConfig)
@@ -203,7 +186,7 @@ public class VocabBlasterActivity extends DefectReportingActivity
 
     private void setAppStateToBundle(Bundle outState)
     {
-        AppState appState = getAppState();
+        VocabBlasterAppState appState = getAppState();
 //        Log.i(LOG_TAG,
 //                "[ P U T ] GradeLevel: " + appState.getSelectedGradeLevelName() +
 //                ", Vocab List Name: " + appState.getSelectedVocabularyListName());
@@ -218,23 +201,29 @@ public class VocabBlasterActivity extends DefectReportingActivity
             return;
         }
 
-        AppState appState = (AppState)savedInstanceState.getSerializable(BUNDLE_KEY_FOR_APPLICATION_STATE);
+        VocabBlasterAppState appState =
+                (VocabBlasterAppState)savedInstanceState.getSerializable(BUNDLE_KEY_FOR_APPLICATION_STATE);
 //        Log.i(LOG_TAG,
 //                "[ G E T ] GradeLevel: " + appState.getSelectedGradeLevelName() +
 //                        ", Vocab List Name: " + appState.getSelectedVocabularyListName());
         setPersistentState(appState);
     }
 
-    public AppState getAppState()
+    public SoundPalette getSoundPalette()
     {
-        return ((VocabBlasterApplication)getApplication()).getAppState();
+        return getVocabBlasterApplication().getSoundPalette();
     }
 
-    public void setPersistentState(AppState appState)
+    public VocabBlasterAppState getAppState()
+    {
+        return getVocabBlasterApplication().getAppState();
+    }
+
+    public void setPersistentState(VocabBlasterAppState appState)
     {
         // The app state is stored in the application object, but the idea here is to
         // hide that detail from the activities.
-        ((VocabBlasterApplication)getApplication()).setAppState(appState);
+        getVocabBlasterApplication().setAppState(appState);
     }
 
     protected VocabBlasterApplication getVocabBlasterApplication()

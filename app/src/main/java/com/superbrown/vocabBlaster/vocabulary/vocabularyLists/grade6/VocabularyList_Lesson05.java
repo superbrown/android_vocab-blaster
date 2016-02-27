@@ -15,7 +15,7 @@ public class VocabularyList_Lesson05 extends VocabularyList
 
         addVocabularyWordToInventory("|badger| n. a small burrowing animal with short legs and long claws; v. to pester; to nag");
         addVocabularyWordToInventory("|calculation| n. the process of using mathematics; careful thinking or planning; an estimate");
-        addVocabularyWordToInventory("|complement| n. that which completes; number needed to complete; a complete set; v. to complete; to addVocabularyList to");
+        addVocabularyWordToInventory("|complement| n. that which completes; number needed to complete; a complete set; v. to complete; to add to");
         addVocabularyWordToInventory("|convert| v. to change; to change or persuade someone to change to a new belief; n. one who has changed, as to religion");
         addVocabularyWordToInventory("|customary| adj. according to custom; habitual; usual");
         addVocabularyWordToInventory("|gallery| n. a long passageway; the cheapest seats in a theater; a place where paintings are displayed");

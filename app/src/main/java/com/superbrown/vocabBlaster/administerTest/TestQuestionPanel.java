@@ -183,7 +183,7 @@ public abstract class TestQuestionPanel extends TableLayout
     {
         try
         {
-            SoundPalette soundPalette = ((VocabBlasterActivity)getContext()).getSoundPalette();
+            SoundPalette soundPalette = getVocabBlasterActivity().getSoundPalette();
 
             if (answerResultType == AnswerResultType.CORRECT)
             {
@@ -206,10 +206,5 @@ public abstract class TestQuestionPanel extends TableLayout
             e.printStackTrace();
             // ignore, not the end of the world
         }
-    }
-
-    public void userHasTimedOut()
-    {
-//        buttonOnClickListener.onClick(new UserHasTimedOutEvent());
     }
 }
