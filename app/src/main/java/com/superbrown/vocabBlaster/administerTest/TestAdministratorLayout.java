@@ -2,7 +2,6 @@ package com.superbrown.vocabBlaster.administerTest;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -10,17 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.superbrown.vocabBlaster.R;
 import com.superbrown.vocabBlaster.AdministerTestActivity;
 import com.superbrown.vocabBlaster.VocabBlasterActivity;
-import com.superbrown.superspell.android.vocabBlaster.client.ver2.VocabBlasterApplication;
 import com.superbrown.vocabBlaster.vocabulary.VocabularyList;
 import com.superbrown.vocabBlaster.vocabulary.VocabularyWordTestingMetric;
 
 
 /**
 */
-public class TestAdministratorLayout extends TableLayout implements IResetable
+public class TestAdministratorLayout extends TableLayout implements ICompletionHandler
 {
     private VocabularyList vocabularyList;
     private TestAdministratorPanel testAdministratorPanel;
@@ -51,7 +48,7 @@ public class TestAdministratorLayout extends TableLayout implements IResetable
         addView(testAdministratorPanel);
     }
 
-    public void reset()
+    public void handleCompletion()
     {
         removeAllViews();
 

@@ -2,7 +2,7 @@ package com.superbrown.vocabBlaster.administerTest;
 
 /**
  */
-public interface IResetable
+public interface ICompletionHandler
 {
-    void reset();
+    void handleCompletion();
 }
