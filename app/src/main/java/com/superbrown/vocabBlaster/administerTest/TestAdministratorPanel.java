@@ -1,7 +1,6 @@
 package com.superbrown.vocabBlaster.administerTest;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -16,18 +15,18 @@ import java.util.List;
 
 public class TestAdministratorPanel extends TableLayout
 {
-    private IResetable caller;
+    private ICompletionHandler completionHandler;
 
 //    private final List<ITestableItem> testableItems;
 //    private int numberOfQuestionsAsked = 0;
 
-    public TestAdministratorPanel(Context context, IResetable caller, List<ITestableItem> testableItems)
+    public TestAdministratorPanel(Context context, ICompletionHandler completionHandler, List<ITestableItem> testableItems)
     {
         super(context);
 
         this.setOrientation(HORIZONTAL);
 
-        this.caller = caller;
+        this.completionHandler = completionHandler;
 
         List sortedItemsToTest = RandomList.shuffle(testableItems);
         askQuestion(0, sortedItemsToTest);
@@ -158,7 +157,7 @@ public class TestAdministratorPanel extends TableLayout
         nextButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 if (spellingWordsToTest.size() == 0) {
-                    caller.reset();
+                    completionHandler.handleCompletion();
                     return;
                 }
 

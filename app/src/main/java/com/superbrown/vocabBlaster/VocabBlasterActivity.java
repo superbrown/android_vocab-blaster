@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,8 +41,6 @@ public class VocabBlasterActivity extends DefectReportingActivity
 //        Log.i(LOG_TAG, "Calling onCreate()");
 
         // initialization code
-
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         CHALK_FONT = Typeface.createFromAsset(getAssets(), "fonts/craya___.ttf");
 
@@ -147,8 +146,7 @@ public class VocabBlasterActivity extends DefectReportingActivity
     {
 //        Log.i(LOG_TAG, "Calling onConfigurationChanged()");
 
-//        super.onConfigurationChanged(newConfig);
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        super.onConfigurationChanged(newConfig);
     }
 
 
@@ -170,7 +168,7 @@ public class VocabBlasterActivity extends DefectReportingActivity
         super.onSaveInstanceState(outState);
 //        Log.i(LOG_TAG, "Calling onSaveInstanceState()");
 
-        setAppStateToBundle(outState);
+//        setBundleAppState(outState);
     }
 
     @Override
@@ -179,35 +177,50 @@ public class VocabBlasterActivity extends DefectReportingActivity
         super.onRestoreInstanceState(savedInstanceState);
 //        Log.i(LOG_TAG, "Calling onRestoreInstanceState()");
 
-        getAppStateFromBundle(savedInstanceState);
+//        VocabBlasterAppState appState = getBundleAppState(savedInstanceState);
+//
+//        if (appState != null)
+//        {
+//            setAppState(appState);
+//        }
     }
 
-    public static final String BUNDLE_KEY_FOR_APPLICATION_STATE = "applicationState";
+    // DESIGN NOTE:
+    // This was here to support changes to the screen orientation.  I was trying to save the app's
+    // state in the bundle, but, as it was designed, the state didn't contain enough information to
+    // to be able to resume the app properly.  In the end, I ended up configuring the app so that
+    // the  activity isn't actually destroyed when the screen orientation changes.  I don't know
+    // enough to know if this is the recommended approach.  I've seen some posts to make me think
+    // it may not be.  However, for the purposes of this app, it's probably fine for 99% of actual
+    // use cases.
 
-    private void setAppStateToBundle(Bundle outState)
-    {
-        VocabBlasterAppState appState = getAppState();
+//    public static final String BUNDLE_KEY_FOR_APPLICATION_STATE = "applicationState";
+//
+//    private void setBundleAppState(Bundle outState)
+//    {
+//        VocabBlasterAppState appState = getAppState();
 //        Log.i(LOG_TAG,
 //                "[ P U T ] GradeLevel: " + appState.getSelectedGradeLevelName() +
 //                ", Vocab List Name: " + appState.getSelectedVocabularyListName());
-        outState.putSerializable(BUNDLE_KEY_FOR_APPLICATION_STATE, appState);
-    }
-
-    private void getAppStateFromBundle(Bundle savedInstanceState)
-    {
-        if (savedInstanceState == null)
-        {
+//        outState.putSerializable(BUNDLE_KEY_FOR_APPLICATION_STATE, appState);
+//    }
+//
+//    private VocabBlasterAppState getBundleAppState(Bundle savedInstanceState)
+//    {
+//        if (savedInstanceState == null)
+//        {
 //            Log.i(LOG_TAG, "[ G E T ] (nothing found)");
-            return;
-        }
-
-        VocabBlasterAppState appState =
-                (VocabBlasterAppState)savedInstanceState.getSerializable(BUNDLE_KEY_FOR_APPLICATION_STATE);
+//            return null;
+//        }
+//
+//        VocabBlasterAppState appState =
+//                (VocabBlasterAppState)savedInstanceState.getSerializable(BUNDLE_KEY_FOR_APPLICATION_STATE);
 //        Log.i(LOG_TAG,
 //                "[ G E T ] GradeLevel: " + appState.getSelectedGradeLevelName() +
 //                        ", Vocab List Name: " + appState.getSelectedVocabularyListName());
-        setPersistentState(appState);
-    }
+//
+//        return appState;
+//    }
 
     public SoundPalette getSoundPalette()
     {
@@ -219,7 +232,7 @@ public class VocabBlasterActivity extends DefectReportingActivity
         return getVocabBlasterApplication().getAppState();
     }
 
-    public void setPersistentState(VocabBlasterAppState appState)
+    public void setAppState(VocabBlasterAppState appState)
     {
         // The app state is stored in the application object, but the idea here is to
         // hide that detail from the activities.
