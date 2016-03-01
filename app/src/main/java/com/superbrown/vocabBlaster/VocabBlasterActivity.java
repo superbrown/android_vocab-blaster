@@ -188,11 +188,13 @@ public class VocabBlasterActivity extends DefectReportingActivity
     // DESIGN NOTE:
     // This was here to support changes to the screen orientation.  I was trying to save the app's
     // state in the bundle, but, as it was designed, the state didn't contain enough information to
-    // to be able to resume the app properly.  In the end, I ended up configuring the app so that
-    // the  activity isn't actually destroyed when the screen orientation changes.  I don't know
-    // enough to know if this is the recommended approach.  I've seen some posts to make me think
-    // it may not be.  However, for the purposes of this app, it's probably fine for 99% of actual
-    // use cases.
+    // to be able to resume the app properly.  And, unfortunately, the state information required is
+    // tightly coupled to the UI components.  In the end, I ended up configuring the app so that the
+    // activity won't actually get destroyed when the screen orientation changes.  I've seen some
+    // write-ups online to indicate that this isn't the recommended approach.  It leaves open the
+    // possibility that the OS will discard the app state when hungry for memory, so, when
+    // resumed, the activity will load from scratch.  However, what we have here is going to be fine
+    // in most use cases.  And this app isn't "mission critial."  It's not worth refactoring.
 
 //    public static final String BUNDLE_KEY_FOR_APPLICATION_STATE = "applicationState";
 //
