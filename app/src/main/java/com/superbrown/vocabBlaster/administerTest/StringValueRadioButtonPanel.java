@@ -45,6 +45,10 @@ public class StringValueRadioButtonPanel extends RadioGroup
             TableLayout[] verticalPanels = new TableLayout[] {tableLayout01, tableLayout02};
 
             int halfTheSize = values.size() / 2;
+            int remainder = values.size() % 2;
+            if (remainder > 0) {
+                halfTheSize++;
+            }
 
             int index = 0;
             for (String value : values)
