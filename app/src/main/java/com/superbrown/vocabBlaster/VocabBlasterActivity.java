@@ -113,9 +113,7 @@ public class VocabBlasterActivity extends DefectReportingActivity
         switch (selectedMenuItem.getItemId())
         {
             case R.id.optionsMenuItem_restart:
-                getAppState().setSelectedVocabularyList(null);
-                Intent selectVocabularyListIntent = new Intent(this, SelectVocabularyListActivity.class);
-                startActivity(selectVocabularyListIntent);
+                reset();
                 return true;
 
             case R.id.optionsMenuItem_gomerSound:
